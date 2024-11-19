@@ -17,7 +17,8 @@ final lightTheme = ThemeData(
     style: ButtonStyle(
       shape: WidgetStatePropertyAll(RoundedRectangleBorder()),
       backgroundColor: WidgetStatePropertyAll(Colors.purple),
-      foregroundColor: WidgetStatePropertyAll(Colors.white),
+      foregroundColor:
+          WidgetStatePropertyAll(const Color.fromARGB(255, 226, 216, 216)),
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
@@ -31,29 +32,29 @@ final lightTheme = ThemeData(
 
 final darkTheme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
-    seedColor: Colors.purple,
     brightness: Brightness.dark,
+    seedColor: Colors.purple,
   ),
   dividerColor: Colors.white38,
   highlightColor: Colors.purple,
   sliderTheme: SliderThemeData(
     thumbColor: Colors.purple,
-    activeTrackColor: Colors.white30,
-    inactiveTrackColor: Colors.white30,
+    activeTrackColor: Colors.white38,
+    inactiveTrackColor: Colors.white38,
     trackHeight: 1,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       shape: WidgetStatePropertyAll(RoundedRectangleBorder()),
       backgroundColor: WidgetStatePropertyAll(Colors.purple),
-      foregroundColor: WidgetStatePropertyAll(Colors.white),
+      foregroundColor: WidgetStatePropertyAll(Colors.white38),
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: ButtonStyle(
       shape: WidgetStatePropertyAll(RoundedRectangleBorder()),
-      side: WidgetStatePropertyAll(BorderSide(color: Colors.white30)),
-      foregroundColor: WidgetStatePropertyAll(Colors.white),
+      side: WidgetStatePropertyAll(BorderSide(color: Colors.white38)),
+      foregroundColor: WidgetStatePropertyAll(Colors.white38),
     ),
   ),
 );
