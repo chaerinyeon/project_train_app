@@ -21,12 +21,11 @@ class SeatChoiceBox extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: isEnabled ? Colors.purple : Colors.grey, 
+          backgroundColor: isEnabled ? Colors.purple : Colors.grey,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
         ),
-       
         onPressed: isEnabled
             ? () {
                 print('Departure Station: $departureStation');
@@ -43,7 +42,7 @@ class SeatChoiceBox extends StatelessWidget {
                   ),
                 );
               }
-            : null, 
+            : null,
         child: Text(
           '좌석 선택',
           style: TextStyle(

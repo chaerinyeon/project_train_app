@@ -12,6 +12,8 @@ class _HomePageState extends State<HomePage> {
   String? departureStation;
   String? arrivalStation;
 
+  get viewPurchasedTickets => null;
+
   void selectStation(bool isDeparture) async {
     final selectedStation = await Navigator.push(
       context,
@@ -35,10 +37,12 @@ class _HomePageState extends State<HomePage> {
     final currentArrivalStation = arrivalStation ?? '';
 
     return Scaffold(
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Colors.black // 다크 모드
+          : Colors.grey[200],
       appBar: AppBar(
         title: Text('기차예매'),
       ),
-      backgroundColor: Colors.grey[200],
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

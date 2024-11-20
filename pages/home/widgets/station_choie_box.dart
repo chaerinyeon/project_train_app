@@ -19,26 +19,36 @@ class StationChoiceBox extends StatelessWidget {
     return Container(
       height: 200,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? const Color.fromARGB(35, 158, 158, 158) // 다크 모드
+            : Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child: Stack(
+        alignment: Alignment.center,
         children: [
-          StationColumnWidget(
-            title: '출발역',
-            station: departureStation,
-            onTap: onSelectDeparture,
+          Row(
+            children: [
+              Expanded(
+                child: StationColumnWidget(
+                  title: '출발역',
+                  station: departureStation,
+                  onTap: onSelectDeparture,
+                ),
+              ),
+              Expanded(
+                child: StationColumnWidget(
+                  title: '도착역',
+                  station: arrivalStation,
+                  onTap: onSelectArrival,
+                ),
+              ),
+            ],
           ),
           Container(
             width: 2,
             height: 50,
             color: Colors.grey[400],
-          ),
-          StationColumnWidget(
-            title: '도착역',
-            station: arrivalStation,
-            onTap: onSelectArrival,
           ),
         ],
       ),
