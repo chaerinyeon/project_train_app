@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 
 class SeatTable extends StatelessWidget {
-  final List<String> selectedSeats;
-  final List<String> bookedSeats;
-  final Function(String) onSeatSelected;
+  final List<String> selectedSeats; //현재 선택된 좌석 목록.
+  final List<String> bookedSeats; // 이미 예약된 좌석 목록
+  final Function(String) onSeatSelected; //좌석 선택 시 호출되는 함수
 
   SeatTable({
     required this.selectedSeats,
@@ -16,26 +16,27 @@ class SeatTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final seatColumns = ['A', 'B', 'C', 'D'];
-    final totalRows = 20; // 원하는 행 수
+    final seatColumns = ['A', 'B', 'C', 'D'];// 좌석 열 레이블
+    final totalRows = 20; // 좌석의 행 수
 
     return ListView.builder(
-      itemCount: totalRows + 1, // 20행 + 레이블 행
+      itemCount: totalRows + 1, // 헹 + 열 레이블 행
       itemBuilder: (context, index) {
         if (index == 0) {
           // 좌석 레이블 행
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center, //가운데 정렬
               children: [
+                 // 열 레이블들을 2개씩 나눠서 생성
                 ...seatColumns.sublist(0, 2).map((column) {
                   return _buildLabel(column);
                 }),
                 SizedBox(
                   width: 50,
                   height: 30,
-                ),
+                ),// 좌석 번호 열을 위한 공간
                 ...seatColumns.sublist(2).map((column) {
                   return _buildLabel(column);
                 }),
@@ -48,11 +49,11 @@ class SeatTable extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center, // 가운데 정렬
               children: [
                 // 왼쪽 좌석 (A, B)
                 ...seatColumns.sublist(0, 2).map((column) {
-                  String seatId = '$rowIndex-$column';
+                  String seatId = '$rowIndex-$column'; //좌석 ID 생성 
                   return _buildSeat(seatId);
                 }),
                 // 좌석 번호 셀
@@ -61,13 +62,14 @@ class SeatTable extends StatelessWidget {
                   height: 50,
                   alignment: Alignment.center,
                   child: Text(
-                    '$rowIndex',
+                    '$rowIndex', // 행 번호 표시
+
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
                 // 오른쪽 좌석 (C, D)
                 ...seatColumns.sublist(2).map((column) {
-                  String seatId = '$rowIndex-$column';
+                  String seatId = '$rowIndex-$column';  //좌석 ID 생성 
                   return _buildSeat(seatId);
                 }),
               ],
@@ -78,42 +80,42 @@ class SeatTable extends StatelessWidget {
     );
   }
 
-  Widget _buildLabel(String label) {
+  Widget _buildLabel(String label) {   // 좌석 열 레이블을 생성
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 2),
+      margin: EdgeInsets.symmetric(horizontal: 2), //좌우여백
       width: 50,
       height: 30,
-      alignment: Alignment.center,
+      alignment: Alignment.center, //가운데 정렬
       child: Text(
-        label,
+        label, //열 레이블
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
   }
 
-  Widget _buildSeat(String seatId) {
-    final isSelected = selectedSeats.contains(seatId);
-    final isBooked = bookedSeats.contains(seatId);
+  Widget _buildSeat(String seatId) { //좌석 생성
+    final isSelected = selectedSeats.contains(seatId); //선택된 좌석 여부 확인
+    final isBooked = bookedSeats.contains(seatId); //예약된 좌석 여부 확인
 
-    return GestureDetector(
+    return GestureDetector( //예약된 좌석 탭 불가능
       onTap: isBooked
           ? null
           : () {
-              onSeatSelected(seatId);
+              onSeatSelected(seatId); //좌석 선택 콜백 함수
             },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 2),
+        margin: EdgeInsets.symmetric(horizontal: 2), //좌우 여백
         width: 50,
         height: 50,
         decoration: BoxDecoration(
           color: isBooked
-              ? Colors.grey
+              ? Colors.grey //예약된 좌석의 색
               : (isSelected
-                  ? Colors.purple
-                  : const Color.fromARGB(255, 228, 224, 224)),
-          borderRadius: BorderRadius.circular(8),
+                  ? Colors.purple // 선택된 좌석의 색
+                  : const Color.fromARGB(255, 228, 224, 224)), //기본 색상
+          borderRadius: BorderRadius.circular(8), //모서리 둥글게
           border: Border.all(
-            color: Colors.black,
+            color: Colors.black, //테두리
             width: 1,
           ),
         ),

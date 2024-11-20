@@ -3,37 +3,38 @@
 import 'package:flutter/material.dart';
 
 class SelectStatus extends StatelessWidget {
-  final List<String> selectedSeats;
+  final List<String> selectedSeats; //선택된 좌석 목록
 
   SelectStatus({required this.selectedSeats});
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, //왼쪽정렬
+    children: [
      
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center, //가운데정렬
           children: [
             _buildSeatStatusBox(
                 const Color.fromARGB(255, 228, 224, 224), '예약 가능'),
-            SizedBox(width: 16),
+            SizedBox(width: 16), //사이간격
             _buildSeatStatusBox(Colors.purple, '선택됨'),
-            SizedBox(width: 16),
+            SizedBox(width: 16), //사이간격
             _buildSeatStatusBox(Colors.grey, '예약됨'),
           ],
         ),
       ),
     
-      if (selectedSeats.isNotEmpty)
+      if (selectedSeats.isNotEmpty) // 선택된 좌석 표시
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center, //가운데 정ㅈ렬
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                '''선택된 좌석: ${selectedSeats.join(', ')}''',
+                '''선택된 좌석: ${selectedSeats.join(', ')}''', //선택된 좌석 목록
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
@@ -42,7 +43,7 @@ class SelectStatus extends StatelessWidget {
     ]);
   }
 
-  Widget _buildSeatStatusBox(Color color, String status) {
+  Widget _buildSeatStatusBox(Color color, String status) { //좌석상태 박스 생성
     return Row(
       children: [
         Container(
@@ -54,7 +55,7 @@ class SelectStatus extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
           ),
         ),
-        SizedBox(width: 8),
+        SizedBox(width: 8), //간격
         Text(
           status,
           style: TextStyle(fontSize: 16),

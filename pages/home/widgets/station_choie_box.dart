@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/home/widgets/station_column.dart';
 
-class StationChoiceBox extends StatelessWidget {
+class StationChoiceBox extends StatelessWidget { 
+  // 출발역, 도착역, 각 역 선택 시 실행할 콜백함수를 받아 StationChoiceBox 생성
   final String? departureStation;
   final String? arrivalStation;
   final VoidCallback onSelectDeparture;
@@ -20,32 +21,32 @@ class StationChoiceBox extends StatelessWidget {
       height: 200,
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? const Color.fromARGB(35, 158, 158, 158) // 다크 모드
-            : Colors.white,
-        borderRadius: BorderRadius.circular(20),
+            ? const Color.fromARGB(35, 158, 158, 158) // 다크 모드일 때
+            : Colors.white, // 라이트 모드일 때
+        borderRadius: BorderRadius.circular(20), //모서리 둥글게
       ),
-      child: Stack(
+      child: Stack( //출발역, 도착역 , 중간선 중첩
         alignment: Alignment.center,
         children: [
-          Row(
+          Row( // 출발역과 도착역 배치
             children: [
-              Expanded(
+              Expanded( // 화면 공간을 두 컬럼에 동일하게 분배
                 child: StationColumnWidget(
                   title: '출발역',
-                  station: departureStation,
-                  onTap: onSelectDeparture,
+                  station: departureStation, //선택된 출발역
+                  onTap: onSelectDeparture, //선택 시 실행 함수
                 ),
               ),
-              Expanded(
+              Expanded( // 화면 공간을 두 컬럼에 동일하게 분배
                 child: StationColumnWidget(
                   title: '도착역',
-                  station: arrivalStation,
-                  onTap: onSelectArrival,
+                  station: arrivalStation,//선택된 도착역
+                  onTap: onSelectArrival, // 선택 시 실행 함수
                 ),
               ),
             ],
           ),
-          Container(
+          Container( //출발역과 도착역 사이에 구분선 
             width: 2,
             height: 50,
             color: Colors.grey[400],
