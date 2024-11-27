@@ -1,10 +1,12 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/pages/station/widgets/station_lst.dart';
+import 'package:flutter_application_1/pages/station/widgets/station_list.dart';
 
 class StationListPage extends StatelessWidget {
   final bool isDeparture;
 
-  StationListPage({Key? key, required this.isDeparture}) : super(key: key);
+  StationListPage({super.key, required this.isDeparture});
 
   @override
   Widget build(BuildContext context) {

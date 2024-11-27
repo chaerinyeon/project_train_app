@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class StationList {
@@ -19,7 +21,7 @@ class StationList {
 class StationListItem extends StatelessWidget {
   final String station;
 
-  const StationListItem({required this.station, Key? key}) : super(key: key);
+  const StationListItem({required this.station, super.key});
 
   @override
   Widget build(BuildContext context) {

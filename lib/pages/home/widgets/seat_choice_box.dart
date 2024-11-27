@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/pages/seat/seat_page.dart';
+import 'package:flutter_application_1/pages/seat/seat_page.dart';
 
 class SeatChoiceBox extends StatelessWidget {
   // 출발역 이름, null 또는 빈 문자열이면 버튼 활셩화

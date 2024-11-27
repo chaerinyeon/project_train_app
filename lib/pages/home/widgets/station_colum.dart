@@ -5,7 +5,8 @@ class StationColumnWidget extends StatelessWidget {
   final String? station;
   final VoidCallback onTap;
 
-  StationColumnWidget({ //전체 제목, 역이름, 탭 콜백함수를 받아 생성
+  StationColumnWidget({
+    //전체 제목, 역이름, 탭 콜백함수를 받아 생성
     required this.title,
     required this.station,
     required this.onTap,

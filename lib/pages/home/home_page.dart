@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/pages/home/widgets/seat_choice_box.dart';
-import 'package:flutter_train_app/pages/home/widgets/station_choie_box.dart';
-import 'package:flutter_train_app/pages/station/station_list_page.dart';
+import 'package:flutter_application_1/pages/home/widgets/seat_choice_box.dart';
+import 'package:flutter_application_1/pages/home/widgets/station_choice_box.dart';
+import 'package:flutter_application_1/pages/station/station_list_page.dart';
 
 class HomePage extends StatefulWidget {
   //StatefulWidget으ㄹ 사용하여 상태 관리
@@ -42,31 +42,39 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     //Widget tree 빌드 함수
-    final currentDepartureStation = departureStation ?? ''; // 출발역이 null이면 빈 문자열 사용
+    final currentDepartureStation =
+        departureStation ?? ''; // 출발역이 null이면 빈 문자열 사용
     final currentArrivalStation = arrivalStation ?? ''; // 도착역이 null이면 빈 문자열 사용
 
-    return Scaffold( // Scaffolld 위젯을 사용하여 앱의 기본 구조를 설명
+    return Scaffold(
+      // Scaffolld 위젯을 사용하여 앱의 기본 구조를 설명
       backgroundColor: Theme.of(context).brightness == Brightness.dark // 테마 상태
           ? Colors.black // 다크 모드
           : Colors.grey[200], //라이트 모드
-      appBar: AppBar( //앱바 설정
+      appBar: AppBar(
+        //앱바 설정
         title: Text('기차예매'), //앱바 제목
       ),
-      body: Padding( //패딩 추가로 여백 추가
+      body: Padding(
+        //패딩 추가로 여백 추가
         padding: const EdgeInsets.all(20.0),
-        child: Column( // 열 방향향으로 위젯 배치
+        child: Column(
+          // 열 방향향으로 위젯 배치
           mainAxisAlignment: MainAxisAlignment.center, // 위젯 가운데 정렬
-          children: [ //위젯 목록
-            StationChoiceBox( // 출발역과 도착역 선택박스
+          children: [
+            //위젯 목록
+            StationChoiceBox(
+              // 출발역과 도착역 선택박스
               departureStation: departureStation, // 현재 선택된 출발역 전달
               arrivalStation: arrivalStation, // 현재 선택된 도착역 전달
               onSelectDeparture: () => selectStation(true), // 출발역 선택 함수 설정
               onSelectArrival: () => selectStation(false), // 도착역 선택 함수 설정
             ),
             SizedBox(height: 20), // 위젯 사이 간격
-            SeatChoiceBox( //좌석 선택 박스 표시
+            SeatChoiceBox(
+              //좌석 선택 박스 표시
               departureStation: currentDepartureStation, // 현재 선택된 출발역 전달
-              arrivalStation: currentArrivalStation, // 현재 선택된 도착역 전달 
+              arrivalStation: currentArrivalStation, // 현재 선택된 도착역 전달
             ),
           ],
         ),

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_train_app/pages/home/home_page.dart';
+import 'package:flutter_application_1/pages/home/home_page.dart';
 
 class BookBox extends StatelessWidget {
   final List<String> selectedSeats;
@@ -27,7 +27,8 @@ class BookBox extends StatelessWidget {
             : () {
                 showCupertinoDialog(
                   context: context,
-                  builder: (context) => CupertinoAlertDialog( // CupertinoAlertDialog를 사용하여 예약 확인 다이얼로그 표시
+                  builder: (context) => CupertinoAlertDialog(
+                    // CupertinoAlertDialog를 사용하여 예약 확인 다이얼로그 표시
                     title: Text('예약 확인'),
                     content:
                         Text('좌석 ${selectedSeats.join(', ')} 을(를) 예약하시겠습니까?'),
@@ -45,7 +46,8 @@ class BookBox extends StatelessWidget {
                           Navigator.pop(context); // 닫기
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                              builder: (context) => HomePage(), //HomePage이동 후 기존 경로 제거
+                              builder: (context) =>
+                                  HomePage(), //HomePage이동 후 기존 경로 제거
                             ),
                             (route) => false,
                           );
